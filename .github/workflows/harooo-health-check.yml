@@ -1,0 +1,17 @@
+name: Harooo Health Check
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Harooo Hub
+        run: if [ $(curl -s -o /dev/null -w "%{http_code}" "https://harooo.com/" -v) -ne 200 ]; then; exit 1; fi
+      - name: Harooo
+        run: if [ $(curl -s -o /dev/null -w "%{http_code}" "https://harooo.com/harooo" -v) -ne 200 ]; then; exit 1; fi
