@@ -1,17 +1,20 @@
 name: Darim Health Check
 
 on:
+  push:
+    branches:
+      - master
+    paths:
+      - '.github/workflows/**'
   schedule:
     - cron: '0 0 * * *'
 
 jobs:
   test:
-
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
       - name: Darim Client
-        run: if [ $(curl -s -o /dev/null -w "%{http_code}" "https://darim.vercel.app/" -v) -ne 200 ]; then; exit 1; fi
+        run: bash script.sh https://darim.vercel.app/
       - name: Darim API Gateway
-        run: if [ $(curl -s -o /dev/null -w "%{http_code}" "https://harooo.com:9600/" -v) -ne 200 ]; then; exit 1; fi
+        run: bash script.sh https://www.harooo.com:9600/
