@@ -6,6 +6,7 @@ on:
       - master
     paths:
       - '.github/workflows/**'  
+      - 'script.sh'
   schedule:
     - cron: '0 0 * * *'
 
