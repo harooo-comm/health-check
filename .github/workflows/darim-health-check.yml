@@ -18,4 +18,4 @@ jobs:
       - name: Darim Client
         run: bash script.sh https://darim.vercel.app/
       - name: Darim API Gateway
-        run: bash script.sh https://www.darim-api.tk/
+        run: bash script.sh https://darim-api.tk/
